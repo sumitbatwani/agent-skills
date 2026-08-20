@@ -1,0 +1,19 @@
+{
+  "name": "agent-skills",
+  "version": "0.1.0",
+  "description": "Shared Claude Code agent skills for our team.",
+  "author": {
+    "name": "Sumit Kumar",
+    "url": "https://github.com/sumitbatwani"
+  },
+  "repository": "https://github.com/sumitbatwani/agent-skills",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "claude-code",
+    "agent"
+  ],
+  "skills": [
+    "./skills/examples/example-skill"
+  ]
+}

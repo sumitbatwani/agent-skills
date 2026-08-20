@@ -1,0 +1,48 @@
+name: Lint skills
+
+on:
+  pull_request:
+    paths:
+      - "skills/**"
+      - ".claude-plugin/**"
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate every SKILL.md has required frontmatter
+        run: |
+          set -e
+          fail=0
+          for f in $(find skills -name SKILL.md); do
+            dir=$(dirname "$f")
+            folder_name=$(basename "$dir")
+            name=$(sed -n 's/^name: *//p' "$f" | head -1 | tr -d '\r')
+            desc=$(sed -n 's/^description: *//p' "$f" | head -1)
+            if [ -z "$name" ]; then
+              echo "::error file=$f::missing 'name' in frontmatter"; fail=1
+            elif [ "$name" != "$folder_name" ]; then
+              echo "::error file=$f::name '$name' does not match folder name '$folder_name'"; fail=1
+            fi
+            if [ -z "$desc" ]; then
+              echo "::error file=$f::missing 'description' in frontmatter"; fail=1
+            fi
+          done
+          exit $fail
+      - name: Validate plugin.json is valid JSON and lists every skill
+        run: |
+          python3 - <<'PY'
+          import json, sys, pathlib
+
+          plugin = json.loads(pathlib.Path(".claude-plugin/plugin.json").read_text())
+          declared = set(plugin.get("skills", []))
+          actual = {
+              f"./{p.parent.relative_to('.')}"
+              for p in pathlib.Path("skills").rglob("SKILL.md")
+          }
+          missing = actual - declared
+          if missing:
+              print(f"::error::skills missing from plugin.json: {sorted(missing)}")
+              sys.exit(1)
+          PY

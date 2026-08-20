@@ -1,0 +1,20 @@
+{
+  "name": "agent-skills",
+  "owner": {
+    "name": "Sumit Kumar",
+    "url": "https://github.com/sumitbatwani"
+  },
+  "description": "Our team's shared Claude Code skills, as an installable plugin.",
+  "plugins": [
+    {
+      "name": "agent-skills",
+      "source": "./",
+      "description": "Shared Claude Code agent skills for our team.",
+      "category": "engineering",
+      "keywords": [
+        "skills",
+        "claude-code"
+      ]
+    }
+  ]
+}
