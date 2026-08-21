@@ -15,11 +15,10 @@ Add this repo as a plugin marketplace, then install the plugin:
 
 ```
 skills/
-  <category>/
-    <skill-name>/
-      SKILL.md        # required: frontmatter (name, description) + instructions
-      scripts/         # optional: helper scripts the skill can invoke
-      references/       # optional: supporting docs, examples
+  <skill-name>/
+    SKILL.md        # required: frontmatter (name, description) + instructions
+    scripts/         # optional: helper scripts the skill can invoke
+    references/       # optional: supporting docs, examples
 ```
 
 ## Contributing

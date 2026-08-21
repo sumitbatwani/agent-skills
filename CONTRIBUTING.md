@@ -2,8 +2,7 @@
 
 ## Adding a skill
 
-1. Copy `skills/examples/example-skill/` to `skills/<category>/<your-skill-name>/`.
-   - `<category>` is a loose grouping (e.g. `engineering`, `productivity`, `misc`). Ask if unsure where yours fits.
+1. Copy `skills/example-skill/` to `skills/<your-skill-name>/`.
    - `<your-skill-name>` must be kebab-case and match the `name:` field in its `SKILL.md`.
 2. Fill in `SKILL.md`. The `description` field is load-bearing — it's what Claude
    uses to decide whether to trigger the skill, so it must state both:

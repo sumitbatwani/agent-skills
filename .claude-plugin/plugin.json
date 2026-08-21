@@ -14,7 +14,8 @@
     "agent"
   ],
   "skills": [
-    "./skills/examples/example-skill",
-    "./skills/engineering/review-style-guide"
+    "./skills/example-skill",
+    "./skills/review-style-guide",
+    "./skills/generate-changelog"
   ]
 }
